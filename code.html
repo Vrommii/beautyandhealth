@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TEMPO — студия красоты</title>
+<style>
+:root {
+  --green: #8da28c;
+  --dark-green: #657863;
+  --brown: #3a230a;
+  --cream: #eee9c1;
+  --paper: #f5f1df;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--brown);
+  font-family: Arial, sans-serif;
+}
+button, a { font: inherit; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; }
+
+header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 22px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--cream);
+  background: rgba(58,35,10,.55);
+  z-index: 5;
+}
+.logo {
+  font: 30px Georgia, serif;
+  letter-spacing: 7px;
+}
+nav { display: flex; gap: 30px; }
+nav a:hover { color: var(--green); }
+.cart-button {
+  padding: 11px 20px;
+  color: var(--cream);
+  border: 1px solid var(--cream);
+  background: transparent;
+  border-radius: 30px;
+}
+
+.hero {
+  min-height: 760px;
+  padding: 190px 7% 80px;
+  color: var(--cream);
+  background:
+    linear-gradient(90deg,rgba(35,25,15,.88),rgba(35,25,15,.25)),
+    url("https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=1800&q=88")
+    center/cover;
+}
+.hero h1 {
+  max-width: 800px;
+  margin: 0 0 25px;
+  color: var(--green);
+  font: 100px/.95 Georgia, serif;
+}
+.hero p {
+  max-width: 550px;
+  font: 27px/1.4 Georgia, serif;
+}
+.eyebrow {
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+.section { padding: 100px 7%; }
+h2 {
+  margin: 0 0 35px;
+  font: 64px/1 Georgia, serif;
+}
+.services {
+  color: var(--cream);
+  background: var(--brown);
+}
+.service-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 55px;
+}
+.service-photo {
+  min-height: 430px;
+  border-radius: 28px;
+  background:
+    url("https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=1200&q=88")
+    center/cover;
+}
+.service-item {
+  padding: 20px 0;
+  border-bottom: 1px solid #ffffff40;
+}
+.service-item h3 {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  font: 25px Georgia, serif;
+}
+.service-item p {
+  color: #eee9c1b8;
+  line-height: 1.6;
+}
+.price { color: var(--green); white-space: nowrap; }
+
+.about {
+  background: var(--green);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+.about p {
+  font: 21px/1.6 Georgia, serif;
+}
+.about-photo {
+  min-height: 480px;
+  border-radius: 48% 48% 25px 25px;
+  background:
+    url("https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=1200&q=88")
+    center/cover;
+}
+.locations {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 30px;
+}
+.location {
+  padding-top: 15px;
+  border-top: 1px solid #3a230a55;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 25px;
+}
+.product {
+  padding: 16px;
+  border-radius: 25px;
+  background: #e9e4cc;
+}
+.product img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 18px;
+}
+.product h3 {
+  min-height: 50px;
+  font: 22px Georgia, serif;
+}
+.product-price { color: var(--dark-green); }
+.add {
+  width: 100%;
+  padding: 14px;
+  border: 0;
+  border-radius: 30px;
+  color: white;
+  background: var(--brown);
+}
+.add:hover { background: var(--dark-green); }
+
+footer {
+  padding: 55px 7%;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  color: var(--cream);
+  background: var(--brown);
+}
+footer .logo { margin-bottom: 15px; }
+
+.cart-panel {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  right: -420px;
+  width: min(420px,100%);
+  height: 100vh;
+  padding: 30px;
+  overflow-y: auto;
+  background: var(--paper);
+  box-shadow: 0 0 50px #0003;
+  transition: right .3s;
+}
+.cart-panel.open { right: 0; }
+.cart-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart-head h2 { font-size: 36px; }
+.close {
+  border: 0;
+  background: transparent;
+  font-size: 30px;
+}
+.cart-row {
+  padding: 18px 0;
+  border-bottom: 1px solid #3a230a33;
+}
+.cart-row button {
+  margin: 10px 8px 0 0;
+  padding: 5px 12px;
+  border: 1px solid var(--brown);
+  border-radius: 20px;
+  background: transparent;
+}
+.total {
+  margin-top: 25px;
+  font-size: 22px;
+  font-weight: bold;
+}
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 15;
+  background: #0007;
+}
+.overlay.open { display: block; }
+
+@media(max-width:750px) {
+  header { padding: 18px 5%; }
+  nav { display: none; }
+  .hero { min-height: 680px; padding-top: 180px; }
+  .hero h1 { font-size: 65px; }
+  .hero p { font-size: 21px; }
+  h2 { font-size: 46px; }
+  .service-grid,.about { grid-template-columns: 1fr; }
+  .products { grid-template-columns: 1fr; }
+  .service-photo,.about-photo { min-height: 330px; }
+  footer { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">TEMPO</div>
+  <nav>
+    <a href="#services">Услуги</a>
+    <a href="#about">О студии</a>
+    <a href="#shop">Магазин</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+  <button class="cart-button" onclick="openCart()">
+    Корзина (<span id="count">0</span>)
+  </button>
+</header>
+
+<main>
+<section class="hero">
+  <div class="eyebrow">Студия красоты TEMPO</div>
+  <h1>Красота<br>в твоём<br>ритме</h1>
+  <p>Время для себя. Забота о деталях. Красота, которая вписывается в твой день.</p>
+</section>
+
+<section class="section services" id="services">
+  <div class="eyebrow">Наши направления</div>
+  <h2>Услуги</h2>
+  <div class="service-grid">
+    <div>
+      <h3>Маникюр</h3>
+      <div class="service-item">
+        <h3>Маникюр без покрытия <span class="price">1 200 ₽</span></h3>
+        <p>Аккуратная обработка ногтей и уход за руками.</p>
+      </div>
+      <div class="service-item">
+        <h3>Маникюр с покрытием <span class="price">2 200 ₽</span></h3>
+        <p>Маникюр и стойкое покрытие в выбранном оттенке.</p>
+      </div>
+      <div class="service-item">
+        <h3>Снятие покрытия <span class="price">400 ₽</span></h3>
+        <p>Бережное снятие предыдущего покрытия.</p>
+      </div>
+      <h3>Педикюр</h3>
+      <div class="service-item">
+        <h3>Педикюр <span class="price">2 000 ₽</span></h3>
+        <p>Уход за стопами и ногтями.</p>
+      </div>
+    </div>
+    <div class="service-photo"></div>
+  </div>
+</section>
+
+<section class="section about" id="about">
+  <div>
+    <div class="eyebrow">Немного о нас</div>
+    <h2>Место для себя</h2>
+    <p>TEMPO — пространство красоты и спокойствия. Мы верим, что забота о себе начинается с маленьких ритуалов.</p>
+    <h3>Наши студии</h3>
+    <div class="locations">
+      <div class="location"><b>Филиал 01</b><br>Москва, адрес уточняется</div>
+      <div class="location"><b>Филиал 02</b><br>Москва, адрес уточняется</div>
+    </div>
+  </div>
+  <div class="about-photo"></div>
+</section>
+
+<section class="section" id="shop">
+  <div class="eyebrow">Маленькие ритуалы каждый день</div>
+  <h2>Товары для ухода</h2>
+  <div class="products">
+    <article class="product">
+      <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=900&q=88" alt="Косметика для тела">
+      <h3>Скраб для тела The Act</h3>
+      <p class="product-price">456 ₽</p>
+      <button class="add" onclick="add('scrub')">В корзину</button>
+    </article>
+    <article class="product">
+      <img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=900&q=88" alt="Масло для ухода">
+      <h3>Масло для кутикулы</h3>
+      <p class="product-price">568 ₽</p>
+      <button class="add" onclick="add('oil')">В корзину</button>
+    </article>
+    <article class="product">
+      <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=900&q=88" alt="Средства для маникюра">
+      <h3>Набор для ухода за ногтями</h3>
+      <p class="product-price">543 ₽</p>
+      <button class="add" onclick="add('files')">В корзину</button>
+    </article>
+  </div>
+</section>
+</main>
+
+<footer id="contacts">
+  <div>
+    <div class="logo">TEMPO</div>
+    Красота, которая вписывается в твой ритм.
+  </div>
+  <div>Контакты<br>Телефон: уточняется<br>Email: уточняется</div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<aside class="cart-panel" id="cart">
+  <div class="cart-head">
+    <h2>Корзина</h2>
+    <button class="close" onclick="closeCart()">×</button>
+  </div>
+  <div id="items">Корзина пока пуста.</div>
+  <div class="total" id="total"></div>
+</aside>
+
+<script>
+const products = {
+  scrub: {name:"Скраб для тела The Act",price:456},
+  oil: {name:"Масло для кутикулы",price:568},
+  files: {name:"Набор для ухода за ногтями",price:543}
+};
+const cart = {};
+
+function add(id) {
+  cart[id] = (cart[id] || 0) + 1;
+  render();
+}
+function change(id,amount) {
+  cart[id] += amount;
+  if(cart[id] <= 0) delete cart[id];
+  render();
+}
+function render() {
+  const count = Object.values(cart).reduce((a,b)=>a+b,0);
+  document.getElementById("count").textContent = count;
+
+  const ids = Object.keys(cart);
+  const items = document.getElementById("items");
+
+  if(!ids.length) {
+    items.textContent = "Корзина пока пуста.";
+    document.getElementById("total").textContent = "";
+    return;
+  }
+
+  let sum = 0;
+  items.innerHTML = ids.map(id => {
+    const p = products[id];
+    sum += p.price * cart[id];
+    return `
+      <div class="cart-row">
+        <b>${p.name}</b><br>
+        ${p.price} ₽ × ${cart[id]}<br>
+        <button onclick="change('${id}',-1)">−</button>
+        <button onclick="change('${id}',1)">+</button>
+        <button onclick="removeItem('${id}')">Удалить</button>
+      </div>`;
+  }).join("");
+
+  document.getElementById("total").textContent =
+    "Итого: " + sum.toLocaleString("ru-RU") + " ₽";
+}
+function removeItem(id) {
+  delete cart[id];
+  render();
+}
+function openCart() {
+  document.getElementById("cart").classList.add("open");
+  document.getElementById("overlay").classList.add("open");
+}
+function closeCart() {
+  document.getElementById("cart").classList.remove("open");
+  document.getElementById("overlay").classList.remove("open");
+}
+render();
+</script>
+</body>
+</html>
