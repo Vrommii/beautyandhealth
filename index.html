@@ -135,6 +135,21 @@ nav a:hover { opacity: .65; }
   display: block;
 }
 
+/* УВЕЛИЧЕННЫЕ И ОДИНАКОВЫЕ ИЗОБРАЖЕНИЯ МАНИКЮРА И ПЕДИКЮРА */
+
+.hero-icon:nth-child(1),
+.hero-icon:nth-child(2) {
+  width: 110px;
+  min-height: 115px;
+}
+
+.hero-icon:nth-child(1) img,
+.hero-icon:nth-child(2) img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
 .about {
   background: var(--green);
   color: var(--brown);
@@ -693,8 +708,32 @@ footer {
   .hero h1 { font-size: 58px; }
   .hero-main-text { font-size: 23px; }
   .hero-small-text { font-size: 17px; }
-  .hero-icon { width: 80px; min-height: 75px; font-size: 8px; }
-  .hero-icon img { width: 42px; height: 42px; }
+
+  .hero-icon {
+    width: 80px;
+    min-height: 75px;
+    font-size: 8px;
+  }
+
+  .hero-icon img {
+    width: 42px;
+    height: 42px;
+  }
+
+  /* Одинаковый увеличенный размер на телефонах */
+
+  .hero-icon:nth-child(1),
+  .hero-icon:nth-child(2) {
+    width: 88px;
+    min-height: 100px;
+  }
+
+  .hero-icon:nth-child(1) img,
+  .hero-icon:nth-child(2) img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+  }
 
   .about { padding: 25px 18px; }
   .about-text { font-size: 14px; }
