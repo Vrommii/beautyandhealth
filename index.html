@@ -4,15 +4,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TEMPO — красота и здоровье</title>
+<title>TEMPO — Beauty Studio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --sage: #8DA28C;
+  --green: #8DA28C;
+  --dark-green: #596653;
   --brown: #3A230A;
   --cream: #EEE9C1;
-  --paper: #F5F1DF;
-  --serif: Georgia, "Times New Roman", serif;
+  --beige: #D5C9A6;
+  --card: #746747;
 }
 
 * {
@@ -25,9 +30,18 @@ html {
 
 body {
   margin: 0;
-  background: var(--paper);
-  color: var(--brown);
-  font-family: Arial, sans-serif;
+  background: var(--brown);
+  color: var(--cream);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+}
+
+button, a {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
 }
 
 a {
@@ -35,620 +49,708 @@ a {
   text-decoration: none;
 }
 
-/* ШАПКА */
+/* HEADER */
 
-.site-header {
+header {
   position: absolute;
-  z-index: 20;
   top: 0;
+  left: 0;
   width: 100%;
-  min-height: 94px;
-  padding: 0 5%;
+  height: 62px;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(97,110,96,.82);
-  color: var(--cream);
+  padding: 0 5%;
+  background: rgba(91,105,87,.9);
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.brand-mark {
-  width: 46px;
-  height: 46px;
-  border: 1px solid var(--cream);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-family: var(--serif);
-  font-size: 24px;
-}
-
-.brand-name {
-  font-family: var(--serif);
-  font-size: 25px;
+.logo {
+  font-family: Georgia, serif;
+  font-size: 38px;
   letter-spacing: 5px;
+  white-space: nowrap;
 }
 
-.nav {
-  display: flex;
+.logo small {
+  display: block;
+  font-family: Montserrat, sans-serif;
+  font-size: 7px;
+  letter-spacing: 5px;
+  text-align: center;
+  margin-top: -4px;
+}
+
+nav {
   flex: 1;
+  display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin: 0 50px;
-  gap: 20px;
-  font-size: 18px;
+  margin-left: 8%;
+  gap: 15px;
+  font-size: 12px;
 }
 
-.nav a {
-  transition: opacity .2s;
-}
-
-.nav a:hover {
+nav a:hover {
   opacity: .65;
 }
 
 .menu-button {
   display: none;
-  border: 1px solid var(--cream);
-  background: transparent;
   color: var(--cream);
-  border-radius: 30px;
-  padding: 11px 17px;
-  cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--cream);
+  padding: 8px 12px;
 }
 
-/* ПЕРВЫЙ СЛАЙД */
+/* HERO */
 
 .hero {
-  min-height: 836px;
-  padding: 170px 5.5% 70px;
-  position: relative;
-  overflow: hidden;
+  min-height: 405px;
+  padding: 100px 5.5% 45px;
   background:
-    linear-gradient(90deg,rgba(38,27,15,.91),rgba(38,27,15,.45)),
-    url('https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=1800&q=88')
-    center/cover no-repeat;
-}
-
-.hero-content {
-  max-width: 790px;
-  position: relative;
-  z-index: 2;
+    linear-gradient(90deg,rgba(24,22,16,.78),rgba(24,22,16,.1)),
+    url('https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=1800&q=90')
+    center 45% / cover no-repeat;
 }
 
 .hero h1 {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 96px;
-  line-height: .94;
-  color: #8DA28C;
-  margin: 0 0 32px;
+  color: var(--green);
+  font-size: clamp(52px, 8vw, 96px);
+  line-height: 1.02;
+  font-weight: 300;
+  margin: 0;
+  max-width: 600px;
 }
 
-.hero-copy {
-  color: #EEE9C1;
-  font-family: var(--serif);
-  font-size: 36px;
-  line-height: 1.25;
-  margin: 0 0 18px;
-}
-
-.hero-subcopy {
-  color: #EEE9C1;
-  font-size: 24px;
-  line-height: 1.6;
+.hero-main-text {
+  font-size: 19px;
+  line-height: 1.45;
   margin: 0;
 }
 
-.hero-tiles {
-  display: flex;
-  gap: 14px;
-  margin-top: 42px;
-  max-width: 570px;
-  padding: 15px;
-  background: rgba(58,35,10,.55);
-  border-radius: 36px;
+.hero-small-text {
+  font-size: 12px;
+  line-height: 1.35;
+  margin-top: 3px;
 }
 
-.hero-tile {
-  flex: 1;
-  min-height: 116px;
-  border-radius: 25px;
-  background: rgba(238,233,193,.14);
+.hero-icons {
   display: flex;
-  flex-direction: column;
+  gap: 7px;
+  margin-top: 20px;
+  padding: 10px;
+  background: rgba(83,57,20,.75);
+  border-radius: 30px;
+  width: fit-content;
+}
+
+.hero-icon {
+  width: 90px;
+  min-height: 85px;
+  border-radius: 22px;
+  background: rgba(238,233,193,.2);
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  color: white;
+  flex-direction: column;
   text-align: center;
-  padding: 12px;
+  gap: 6px;
+  font-size: 9px;
 }
 
-.tile-icon {
-  width: 48px;
-  height: 48px;
-  border: 1px solid var(--cream);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-size: 22px;
+.hero-icon span:first-child {
+  font-size: 27px;
 }
 
-.hero-tile span:last-child {
-  font-size: 12px;
-}
-
-/* ВТОРОЙ СЛАЙД */
+/* ABOUT */
 
 .about {
-  background: var(--sage);
-  padding: 100px 5.5%;
-}
-
-.about-copy p {
-  font-family: var(--serif);
-  font-size: 24px;
-  line-height: 1.55;
+  background: var(--green);
   color: var(--brown);
-  margin: 0 0 20px;
-  max-width: 1200px;
+  padding: 25px 3%;
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 25px;
+  align-items: center;
 }
 
-.locations-title {
-  font-family: var(--serif);
-  font-size: 48px;
+.about-text {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.about-text p {
+  margin: 0 0 7px;
+}
+
+.about-photo {
+  width: 100%;
+  height: 245px;
+  object-fit: cover;
+}
+
+.about h2 {
+  font-size: 25px;
   font-weight: 400;
-  color: var(--brown);
-  margin: 55px 0 30px;
+  text-transform: uppercase;
+  margin: 12px 0 4px;
 }
 
 .locations {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 50px;
-}
-
-.location-column {
-  display: grid;
-  align-content: start;
-  gap: 25px;
+  gap: 15px;
 }
 
 .location {
-  border-top: 1px solid rgba(58,35,10,.3);
-  padding-top: 14px;
+  margin-bottom: 5px;
 }
 
 .location strong {
   display: block;
-  font-size: 32px;
-  font-weight: 400;
-  margin-bottom: 7px;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .location span {
-  display: block;
-  font-size: 24px;
-  line-height: 1.5;
+  font-size: 12px;
 }
 
-/* ТРЕТИЙ СЛАЙД — УСЛУГИ */
+/* SERVICES */
 
 .services {
   background: var(--brown);
+  padding: 25px 4% 10px;
   color: var(--cream);
-  padding: 100px 5.5%;
+}
+
+.services-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+}
+
+.services-content {
+  flex: 1;
+}
+
+.decorative-title {
+  text-align: center;
+  font-family: Georgia, serif;
+  letter-spacing: 5px;
+  font-size: 17px;
+  margin-bottom: 18px;
+}
+
+.decorative-title:before,
+.decorative-title:after {
+  content: "";
+  display: inline-block;
+  width: 25%;
+  height: 1px;
+  background: var(--beige);
+  vertical-align: middle;
+  margin: 0 15px;
 }
 
 .services h2 {
-  font-family: var(--serif);
-  font-size: 48px;
+  font-size: 25px;
   font-weight: 400;
-  color: var(--cream);
-  margin: 0 0 55px;
+  margin: 0 0 2px 15px;
 }
 
-.services-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 65px;
+.service {
+  margin-bottom: 5px;
 }
 
-.service-column h3 {
-  font-family: var(--serif);
+.service-name {
+  font-size: 13px;
   font-weight: 400;
-  font-size: 36px;
-  margin: 0 0 28px;
-  color: var(--cream);
 }
 
-.service-list {
-  display: grid;
-  gap: 24px;
+.service-description {
+  font-size: 9px;
+  line-height: 1.35;
+  color: #d5c9a6;
 }
 
-.service-item {
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(238,233,193,.28);
+.master-photo {
+  width: 35%;
+  height: 290px;
+  object-fit: cover;
+  margin-top: 25px;
 }
 
-.service-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 15px;
-  font-family: var(--serif);
-  font-size: 24px;
-  line-height: 1.3;
-}
-
-.service-price {
-  white-space: nowrap;
-  font-size: 24px;
-}
-
-.service-item p {
-  font-size: 14px;
-  line-height: 1.6;
-  color: rgba(238,233,193,.8);
-  margin: 10px 0 0;
-}
-
-/* МАГАЗИН */
+/* SHOP */
 
 .shop {
-  background: var(--paper);
-  padding: 100px 5.5%;
+  background: var(--brown);
+  padding: 15px 5% 30px;
+  color: var(--cream);
 }
 
 .shop h2 {
-  font-family: var(--serif);
-  font-size: 60px;
-  font-weight: 400;
+  font-size: 29px;
+  font-weight: 300;
+  margin: 0 0 5px;
 }
 
-.shop-note {
-  font-size: 16px;
-  line-height: 1.6;
-  max-width: 520px;
+.shop-description {
+  font-size: 11px;
+  margin-bottom: 18px;
+}
+
+.products-wrap {
+  position: relative;
 }
 
 .products {
   display: grid;
   grid-template-columns: repeat(3,1fr);
-  gap: 22px;
-  margin-top: 40px;
+  gap: 20px;
 }
 
 .product-card {
-  background: #E9E4CC;
-  border-radius: 25px;
-  padding: 18px;
+  position: relative;
+  padding: 9px;
+  border-radius: 17px;
+  background: #59452a;
+  text-align: center;
+  cursor: pointer;
+  transition: transform .2s;
 }
 
-.product-visual {
-  height: 280px;
-  border-radius: 18px;
-  background-size: cover;
-  background-position: center;
+.product-card:hover {
+  transform: translateY(-4px);
 }
 
-.product-visual.scrub {
-  background-image: url('https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=900&q=88');
+.product-image {
+  width: 100%;
+  height: 165px;
+  border-radius: 14px;
+  object-fit: cover;
+  background: var(--beige);
 }
 
-.product-visual.oil {
-  background-image: url('https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=900&q=88');
+.heart {
+  position: absolute;
+  right: 18px;
+  top: 13px;
+  font-size: 26px;
+  color: #241d15;
+  background: transparent;
+  border: 0;
+  z-index: 2;
 }
 
-.product-visual.files {
-  background-image: url('https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=900&q=88');
-}
-
-.product-meta {
-  display: flex;
-  justify-content: space-between;
-  margin: 17px 3px 7px;
+.product-price {
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  margin: 5px 5px 2px;
 }
 
 .product-name {
-  font-family: var(--serif);
-  font-size: 22px;
-  min-height: 52px;
+  min-height: 28px;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.25;
+  margin: 0 3px 6px;
 }
 
-.add-button {
-  border: 1px solid var(--brown);
-  border-radius: 30px;
-  padding: 13px 17px;
-  background: var(--brown);
-  color: var(--cream);
-  cursor: pointer;
-}
-
-.product-actions {
-  display: flex;
-  gap: 10px;
-}
-
-.add-button {
-  flex: 1;
-}
-
-/* КОРЗИНА ПОД ТОВАРАМИ */
-
-.cart-section {
+.product-quantity {
   display: flex;
   justify-content: center;
-  margin-top: 45px;
-}
-
-.cart-button {
-  background: var(--brown);
-  color: var(--cream);
-  border: 1px solid var(--brown);
-  border-radius: 30px;
-  padding: 16px 45px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: opacity .2s;
-}
-
-.cart-button:hover,
-.add-button:hover {
-  opacity: .8;
-}
-
-/* ПОДВАЛ */
-
-.footer {
-  background: var(--brown);
-  color: var(--cream);
-  padding: 50px 5.5%;
-  display: flex;
-  justify-content: space-between;
-  gap: 25px;
-  flex-wrap: wrap;
-}
-
-.footer-brand {
-  font-family: var(--serif);
-  font-size: 29px;
-  letter-spacing: 6px;
-}
-
-.footer-links {
-  display: flex;
-  gap: 22px;
-}
-
-/* ВЫЕЗЖАЮЩАЯ КОРЗИНА */
-
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(20,17,12,.52);
-  z-index: 50;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .3s;
-}
-
-.overlay.open {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.cart-drawer {
-  position: fixed;
-  z-index: 51;
-  right: 0;
-  top: 0;
-  height: 100%;
-  width: min(520px,100%);
-  background: var(--paper);
-  padding: 28px;
-  transform: translateX(105%);
-  transition: transform .3s;
-  overflow: auto;
-}
-
-.cart-drawer.open {
-  transform: translateX(0);
-}
-
-.drawer-head {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 15px;
+  font-size: 12px;
 }
 
-.close-button {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 1px solid var(--brown);
-  background: transparent;
-  font-size: 22px;
-  cursor: pointer;
-}
-
-.cart-items {
-  display: grid;
-  gap: 14px;
-}
-
-.cart-item {
-  display: grid;
-  grid-template-columns: 65px 1fr auto;
-  gap: 12px;
-  align-items: center;
-  padding: 12px;
-  background: #E9E4CC;
-  border-radius: 15px;
-}
-
-.cart-thumb {
-  width: 65px;
-  height: 65px;
-  display: grid;
-  place-items: center;
-  background: var(--sage);
-  border-radius: 12px;
-  font-size: 25px;
-}
-
-.qty {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 8px;
-}
-
-.qty button {
-  border: 1px solid var(--brown);
-  background: transparent;
-  border-radius: 50%;
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
-}
-
-.remove {
+.product-quantity button {
   border: 0;
   background: transparent;
-  cursor: pointer;
+  color: var(--cream);
+  font-size: 15px;
+}
+
+.slider-arrow {
+  position: absolute;
+  top: 43%;
+  transform: translateY(-50%);
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--cream);
+  color: var(--brown);
+  font-size: 20px;
+  z-index: 2;
+}
+
+.slider-arrow.left {
+  left: -30px;
+}
+
+.slider-arrow.right {
+  right: -30px;
+}
+
+.cart-link {
+  display: block;
+  width: 132px;
+  text-align: center;
+  margin: 12px auto 0;
+  padding: 8px;
+  border-radius: 30px;
+  background: var(--green);
+  color: white;
+  font-size: 17px;
+  border: 0;
+}
+
+/* PRODUCT DETAIL */
+
+.product-detail {
+  display: none;
+  background: var(--brown);
+  padding: 12px 3% 30px;
+}
+
+.product-detail.active {
+  display: block;
+}
+
+.detail-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--green);
+  color: var(--brown);
+  padding: 10px 15px;
+  font-size: 9px;
+  margin-bottom: 14px;
+}
+
+.detail-navigation button {
+  background: transparent;
+  border: 0;
+  color: var(--brown);
+  font-size: 10px;
+}
+
+.detail-main {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 25px;
+  align-items: center;
+}
+
+.detail-image-wrap {
+  background: var(--cream);
+  padding: 10px;
+  border-radius: 23px;
+}
+
+.detail-image {
+  width: 100%;
+  height: 225px;
+  object-fit: cover;
+  border-radius: 17px;
+  display: block;
+}
+
+.detail-category {
+  font-size: 8px;
+  margin-bottom: 8px;
+}
+
+.detail-title {
+  font-size: 24px;
+  font-weight: 300;
+  margin: 0 0 3px;
+}
+
+.detail-subtitle {
+  font-size: 18px;
+  margin: 0 0 12px;
+}
+
+.detail-description {
+  font-size: 10px;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.detail-price {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.detail-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.detail-qty {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: var(--cream);
+  color: var(--brown);
+  border-radius: 25px;
+  padding: 8px 13px;
+}
+
+.detail-qty button {
+  border: 0;
+  background: transparent;
+  color: var(--brown);
+}
+
+.add-cart {
+  flex: 1;
+  border: 0;
+  border-radius: 25px;
+  background: var(--green);
+  color: var(--brown);
+  padding: 10px;
+  font-size: 11px;
+}
+
+.detail-extra {
+  font-size: 8px;
+  line-height: 1.5;
+  margin-top: 12px;
+}
+
+/* PRODUCT INFO */
+
+.product-info {
+  background: var(--cream);
+  color: var(--brown);
+  padding: 25px 4%;
+}
+
+.product-info h2 {
+  font-size: 20px;
+  font-weight: 300;
+  margin: 0 0 15px;
+}
+
+.info-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.info-columns h3 {
+  font-size: 11px;
+  margin: 0 0 5px;
+}
+
+/* CART */
+
+.cart-page {
+  display: none;
+  min-height: 100vh;
+  background: var(--brown);
+  color: var(--cream);
+}
+
+.cart-page.active {
+  display: block;
+}
+
+.cart-heading {
+  background: var(--green);
+  color: var(--brown);
+  padding: 12px 3%;
+}
+
+.cart-heading h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.cart-heading p {
+  font-size: 8px;
+  margin: 2px 0 0;
+}
+
+.cart-products {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 20px;
+  padding: 20px 3%;
+}
+
+.cart-product {
+  background: #756747;
+  border-radius: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+.cart-product img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.cart-product h3 {
+  font-size: 10px;
+  margin: 6px 0;
+}
+
+.cart-product p {
+  font-size: 10px;
+  margin: 3px;
+}
+
+.cart-product button {
+  background: transparent;
+  border: 0;
+  color: var(--cream);
 }
 
 .cart-total {
-  display: flex;
-  justify-content: space-between;
-  font-size: 24px;
-  margin-top: 24px;
+  text-align: right;
+  padding: 10px 4%;
+  font-size: 18px;
 }
 
 .checkout {
-  width: 100%;
-  margin-top: 20px;
-  padding: 16px;
-  border-radius: 30px;
-  background: var(--brown);
-  color: var(--cream);
+  display: block;
+  margin: 15px 4% 30px auto;
   border: 0;
-  cursor: pointer;
+  border-radius: 25px;
+  padding: 12px 30px;
+  background: var(--green);
+  color: var(--brown);
 }
 
-.empty-cart {
-  padding: 35px 10px;
+/* FOOTER */
+
+footer {
+  background: var(--cream);
+  color: var(--brown);
+  padding: 12px 4%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
 }
 
-/* АДАПТИВНОСТЬ */
+/* RESPONSIVE */
 
-@media(max-width:900px) {
-  .services-grid {
-    grid-template-columns: 1fr;
+@media(max-width:650px) {
+  header {
+    height: 65px;
+    padding: 0 15px;
   }
 
-  .products {
-    grid-template-columns: repeat(2,1fr);
+  .logo {
+    font-size: 26px;
   }
 
-  .nav {
-    margin: 0 20px;
-  }
-}
-
-@media(max-width:640px) {
-  .site-header {
-    min-height: 72px;
-    padding: 0 18px;
-  }
-
-  .nav {
-    display: none;
-    position: absolute;
-    top: 72px;
-    left: 0;
-    right: 0;
-    margin: 0;
-    padding: 20px;
-    background: var(--sage);
-    flex-direction: column;
-    gap: 22px;
+  .logo small {
+    font-size: 5px;
   }
 
   .menu-button {
     display: block;
   }
 
-  .brand-name {
-    font-size: 18px;
+  nav {
+    display: none;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    background: var(--green);
+    flex-direction: column;
+    gap: 20px;
+    color: var(--brown);
+  }
+
+  nav.open {
+    display: flex;
   }
 
   .hero {
-    min-height: 790px;
-    padding: 135px 20px 40px;
+    padding: 110px 20px 30px;
+    min-height: 480px;
   }
 
   .hero h1 {
-    font-size: 58px;
+    font-size: 56px;
   }
 
-  .hero-copy {
-    font-size: 22px;
+  .hero-main-text {
+    font-size: 17px;
   }
 
-  .hero-subcopy {
-    font-size: 16px;
-  }
-
-  .hero-tiles {
-    gap: 7px;
-    padding: 8px;
-  }
-
-  .hero-tile {
-    min-height: 100px;
-    padding: 7px 3px;
-  }
-
-  .locations {
+  .about {
     grid-template-columns: 1fr;
-    gap: 25px;
   }
 
-  .location strong {
-    font-size: 28px;
+  .about-photo {
+    height: 200px;
   }
 
-  .location span {
-    font-size: 20px;
+  .services-top {
+    flex-direction: column;
   }
 
-  .services-grid {
-    gap: 40px;
-  }
-
-  .service-title {
-    font-size: 19px;
-  }
-
-  .service-price {
-    font-size: 19px;
+  .master-photo {
+    width: 100%;
+    height: 230px;
+    margin: 0;
   }
 
   .products {
+    gap: 9px;
+  }
+
+  .product-image {
+    height: 120px;
+  }
+
+  .product-card {
+    padding: 6px;
+  }
+
+  .product-name {
+    font-size: 9px;
+  }
+
+  .detail-main {
     grid-template-columns: 1fr;
   }
 
-  .footer {
+  .detail-image {
+    height: 260px;
+  }
+
+  .cart-products {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .cart-product img {
+    height: 110px;
+  }
+
+  footer {
     flex-direction: column;
+    gap: 10px;
   }
 }
 </style>
@@ -656,86 +758,79 @@ a {
 
 <body>
 
-<header class="site-header">
-
-  <a class="brand" href="#home">
-    <span class="brand-mark">T.</span>
-    <span class="brand-name">TEMPO</span>
+<header>
+  <a href="#home" class="logo">
+    TEMPO
+    <small>BEAUTY STUDIO</small>
   </a>
 
-  <nav class="nav" id="mainNav">
+  <nav id="navigation">
     <a href="#services">Услуги</a>
     <a href="#about">О студии</a>
-    <a href="#shop">Товары</a>
+    <a href="#shop">Косметика</a>
     <a href="#contacts">Контакты</a>
   </nav>
 
-  <button class="menu-button" id="menuToggle">☰</button>
-
+  <button class="menu-button" onclick="toggleMenu()">☰</button>
 </header>
 
-<main>
+<main id="mainSite">
 
-<!-- ПЕРВЫЙ СЛАЙД -->
+<!-- ГЛАВНАЯ -->
 
 <section class="hero" id="home">
+  <h1>Красота и<br>здоровье</h1>
 
-  <div class="hero-content">
+  <p class="hero-main-text">
+    Быстрый уход за собой:<br>
+    маникюр, педикюр,<br>
+    и различные косметические средства
+  </p>
 
-    <h1>Красота<br>и здоровье</h1>
+  <div class="hero-small-text">
+    наши точки находятся у метро<br>
+    для вашего комфорта
+  </div>
 
-    <p class="hero-copy">
-      Быстрый уход за собой :<br>
-      маникюр, педикюр,<br>
-      и различные косметические средства
-    </p>
-
-    <p class="hero-subcopy">
-      наши точки находятся у метро<br>
-      для вашего комфорта
-    </p>
-
-    <div class="hero-tiles">
-
-      <a class="hero-tile" href="#services">
-        <span class="tile-icon">✳</span>
-        <span>Различные виды<br>маникюра</span>
-      </a>
-
-      <a class="hero-tile" href="#services">
-        <span class="tile-icon">◌</span>
-        <span>Различные виды<br>педикюра</span>
-      </a>
-
-      <a class="hero-tile" href="#shop">
-        <span class="tile-icon">✧</span>
-        <span>Косметические<br>средства</span>
-      </a>
-
+  <div class="hero-icons">
+    <div class="hero-icon">
+      <span>♧</span>
+      Различные виды<br>маникюра
+    </div>
+    <div class="hero-icon">
+      <span>♙</span>
+      Различные виды<br>педикюра
+    </div>
+    <div class="hero-icon">
+      <span>♜</span>
+      Косметические<br>средства
     </div>
   </div>
 </section>
 
-<!-- ВТОРОЙ СЛАЙД -->
+<!-- О СТУДИИ -->
 
 <section class="about" id="about">
 
-  <div class="about-copy">
+  <div class="about-text">
 
     <p>
       TEMPO — это маникюрный салон для тех, кто ценит своё время и не привык ждать. Мы находимся прямо у метро, работаем без записи и принимаем клиентов в порядке живой очереди: зашли по пути — и вышли с ухоженными ногтями, лёгкой походкой и настроением, с которым хочется свернуть горы.
     </p>
 
     <p>
-      Мы знаем: современный ритм не терпит пауз. Утро начинается с кофе на бегу, день расписан по минутам, а вечер хочется провести с теми, кто дорог, — а не в очереди на маникюр. Поэтому TEMPO устроен иначе. Здесь всё подчинено одному принципу — красота не должна отнимать время, она должна его украшать.
+      Мы знаем: современный ритм не терпит пауз. Утро начинается с кофе на бегу, день расписан по минутам, а вечер хочется провести с теми, кто дорог, — а не в очереди на маникюр.
     </p>
 
-    <h2 class="locations-title">мы находимся</h2>
+    <p>
+      Поэтому TEMPO устроен иначе. Здесь всё подчинено одному принципу — красота не должна отнимать время, она должна его украшать.
+    </p>
+
+    <h2>Мы находимся:</h2>
 
     <div class="locations">
 
-      <div class="location-column">
-
+      <div>
         <div class="location">
           <strong>Щербинка</strong>
           <span>Пушкинская улица, 2с3</span>
@@ -750,11 +845,9 @@ a {
           <strong>м.Царицыно</strong>
           <span>Весёлая улица, 2</span>
         </div>
-
       </div>
 
-      <div class="location-column">
-
+      <div>
         <div class="location">
           <strong>м.Некрасовка</strong>
           <span>Рождественская улица, 20</span>
@@ -764,118 +857,92 @@ a {
           <strong>м.Выхино</strong>
           <span>Рязанский проспект, 101с5</span>
         </div>
-
       </div>
 
     </div>
   </div>
+
+  <img class="about-photo"
+  src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=900&q=85"
+  alt="Интерьер салона TEMPO">
+
 </section>
 
-<!-- ТРЕТИЙ СЛАЙД -->
+<!-- УСЛУГИ -->
 
 <section class="services" id="services">
 
-  <h2>Маникюр и педикюр</h2>
+  <div class="decorative-title">TEMPO</div>
 
-  <div class="services-grid">
+  <div class="services-top">
 
-    <div class="service-column">
+    <div class="services-content">
 
-      <h3>Маникюр</h3>
+      <h2>Маникюр</h2>
 
-      <div class="service-list">
-
-        <article class="service-item">
-          <div class="service-title">
-            <span>Гигиенический маникюр (без покрытия)</span>
-            <span class="service-price">1100 ₽</span>
-          </div>
-          <p>
-            Базовая уходовая процедура: обработка кутикулы, придание формы ногтям, шлифовка и питательный уход за кожей рук. Подходит тем, кто предпочитает натуральные ногти без покрытия или хочет подготовить ногти к нанесению гель-лака.
-          </p>
-        </article>
-
-        <article class="service-item">
-          <div class="service-title">
-            <span>Комплексный маникюр с покрытием гель-лаком</span>
-            <span class="service-price">1700 ₽</span>
-          </div>
-          <p>
-            Полный уход за руками и ногтями: снятие старого покрытия, обработка кутикулы, формирование ногтей, укрепление и стойкое покрытие гель-лаком. Держится 3–4 недели, выглядит аккуратно и ухоженно каждый день.
-          </p>
-        </article>
-
-        <article class="service-item">
-          <div class="service-title">
-            <span>Укрепление гелем / наращивание</span>
-            <span class="service-price">2500 ₽</span>
-          </div>
-          <p>
-            Укрепление — тонкий слой геля для защиты натуральных ногтей от сломов и расслоения. Наращивание — моделирование длины и формы искусственными материалами. Рекомендуется для тонких, ломких ногтей или для создания желаемой длины.
-          </p>
-        </article>
-
-        <article class="service-item">
-          <div class="service-title">
-            <span>Мужской маникюр</span>
-            <span class="service-price">900 ₽</span>
-          </div>
-          <p>
-            Аккуратная обработка ногтей и кутикулы без покрытия (по желанию — с матовым покрытием). Гигиенично, ухоженно и без лишнего декора.
-          </p>
-        </article>
-
-        <article class="service-item">
-          <div class="service-title">
-            <span>Детский маникюр</span>
-            <span class="service-price">900 ₽</span>
-          </div>
-          <p>
-            Мягкая гигиеническая обработка ногтей для детей: без агрессивных средств, с безопасными инструментами и бережным отношением к маленьким клиентам.
-          </p>
-        </article>
-
+      <div class="service">
+        <div class="service-name">Гигиенический маникюр (без покрытия) 1100 ₽</div>
+        <div class="service-description">
+          Базовая уходовая процедура: обработка кутикулы, придание формы ногтям, шлифовка и питательный уход за кожей рук. Подходит тем, кто предпочитает натуральные ногти без покрытия.
+        </div>
       </div>
+
+      <div class="service">
+        <div class="service-name">Комплексный маникюр с покрытием гель-лаком 1700 ₽</div>
+        <div class="service-description">
+          Полный уход за руками и ногтями: снятие старого покрытия, обработка кутикулы, формирование ногтей, укрепление и стойкое покрытие гель-лаком. Держится 3–4 недели.
+        </div>
+      </div>
+
+      <div class="service">
+        <div class="service-name">Укрепление гелем / наращивание 2500 ₽</div>
+        <div class="service-description">
+          Укрепление — тонкий слой геля для защиты натуральных ногтей от сломов и расслоения. Наращивание — моделирование длины и формы искусственными материалами.
+        </div>
+      </div>
+
+      <div class="service">
+        <div class="service-name">Мужской маникюр 900 ₽</div>
+        <div class="service-description">
+          Аккуратная обработка ногтей и кутикулы без покрытия (по желанию — с матовым покрытием). Гигиенично, ухоженно и без лишнего декора.
+        </div>
+      </div>
+
+      <div class="service">
+        <div class="service-name">Детский маникюр 900 ₽</div>
+        <div class="service-description">
+          Мягкая гигиеническая обработка ногтей для детей: без агрессивных средств, с безопасными инструментами и бережным отношением к маленьким клиентам.
+        </div>
+      </div>
+
+      <h2 style="margin-top:15px">Педикюр</h2>
+
+      <div class="service">
+        <div class="service-name">Гигиенический (без покрытия) 1500 ₽</div>
+        <div class="service-description">
+          Глубокая обработка стоп и ногтей: удаление огрубевшей кожи, мозолей и натоптышей, обработка кутикулы и ногтей. Возвращает стопам лёгкость и ухоженный вид.
+        </div>
+      </div>
+
+      <div class="service">
+        <div class="service-name">Комплексный педикюр с покрытием гель-лаком 2000 ₽</div>
+        <div class="service-description">
+          Полный уход за стопами плюс стойкое покрытие ногтей гель-лаком. Включает обработку кожи и ногтей, укрепление и нанесение покрытия.
+        </div>
+      </div>
+
+      <div class="service">
+        <div class="service-name">Мужской педикюр 1500 ₽</div>
+        <div class="service-description">
+          Гигиеническая обработка стоп и ногтей с акцентом на комфорт и здоровье: удаление огрубевшей кожи, уход за ногтями, по желанию — без покрытия.
+        </div>
+      </div>
+
     </div>
 
-    <div class="service-column">
-
-      <h3>Педикюр</h3>
-
-      <div class="service-list">
-
-        <article class="service-item">
-          <div class="service-title">
-            <span>Гигиенический (без покрытия)</span>
-            <span class="service-price">1500 ₽</span>
-          </div>
-          <p>
-            Глубокая обработка стоп и ногтей: удаление огрубевшей кожи, мозолей и натоптышей, обработка кутикулы и ногтей. Возвращает стопам лёгкость и ухоженный вид, подходит для регулярного ухода.
-          </p>
-        </article>
-
-        <article class="service-item">
-          <div class="service-title">
-            <span>Комплексный педикюр с покрытием гель-лаком</span>
-            <span class="service-price">2000 ₽</span>
-          </div>
-          <p>
-            Полный уход за стопами плюс стойкое покрытие ногтей гель-лаком. Включает обработку кожи и ногтей, укрепление и нанесение покрытия — аккуратный результат на 3–4 недели.
-          </p>
-        </article>
-
-        <article class="service-item">
-          <div class="service-title">
-            <span>Мужской педикюр</span>
-            <span class="service-price">1500 ₽</span>
-          </div>
-          <p>
-            Гигиеническая обработка стоп и ногтей с акцентом на комфорт и здоровье: удаление огрубевшей кожи, уход за ногтями, по желанию — без покрытия. Практично и деликатно.
-          </p>
-        </article>
-
-      </div>
-    </div>
+    <img class="master-photo"
+    src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=900&q=85"
+    alt="Работа мастера маникюра">
 
   </div>
 </section>
@@ -886,157 +953,375 @@ a {
 
   <h2>Товары для ухода</h2>
 
-  <p class="shop-note">
-    В нашем салоне вы также можете приобрести товары, чтобы продолжить заботу о себе дома.
-  </p>
+  <div class="shop-description">
+    В нашем салоне вы так же можете приобрести товары для ухода за собой дома
+  </div>
 
-  <div class="products">
+  <div class="products-wrap">
 
-    <article class="product-card">
+    <button class="slider-arrow left" onclick="moveProducts(-1)">‹</button>
 
-      <div class="product-visual scrub"></div>
+    <div class="products" id="products">
 
-      <div class="product-meta">
-        <span>Тело</span>
-        <span>456 ₽</span>
-      </div>
+      <article class="product-card" onclick="openProduct('scrub')">
+        <button class="heart" onclick="event.stopPropagation(); toggleHeart(this)">♡</button>
+        <img class="product-image"
+        src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=85"
+        alt="Скраб The Act">
+        <div class="product-price">456р</div>
+        <div class="product-name">скраб для тела The act с запахом кокоса</div>
+        <div class="product-quantity">
+          <button onclick="event.stopPropagation(); changeQuantity('scrub',-1)">−</button>
+          <span id="qty-scrub">1</span>
+          <button onclick="event.stopPropagation(); changeQuantity('scrub',1)">+</button>
+        </div>
+      </article>
 
-      <h3 class="product-name">
-        Скраб для тела The Act с запахом кокоса
-      </h3>
+      <article class="product-card" onclick="openProduct('oil')">
+        <button class="heart" onclick="event.stopPropagation(); toggleHeart(this)">♡</button>
+        <img class="product-image"
+        src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=700&q=85"
+        alt="Масло для кутикулы">
+        <div class="product-price">568р</div>
+        <div class="product-name">масло для кутикулы DOONAILS</div>
+        <div class="product-quantity">
+          <button onclick="event.stopPropagation(); changeQuantity('oil',-1)">−</button>
+          <span id="qty-oil">1</span>
+          <button onclick="event.stopPropagation(); changeQuantity('oil',1)">+</button>
+        </div>
+      </article>
 
-      <div class="product-actions">
-        <button class="add-button" data-add="scrub">
-          В корзину
-        </button>
-      </div>
+      <article class="product-card" onclick="openProduct('files')">
+        <button class="heart" onclick="event.stopPropagation(); toggleHeart(this)">♡</button>
+        <img class="product-image"
+        src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=700&q=85"
+        alt="Пилочки для ногтей">
+        <div class="product-price">543р</div>
+        <div class="product-name">пилочки для ногтей 10шт DOONAILS</div>
+        <div class="product-quantity">
+          <button onclick="event.stopPropagation(); changeQuantity('files',-1)">−</button>
+          <span id="qty-files">1</span>
+          <button onclick="event.stopPropagation(); changeQuantity('files',1)">+</button>
+        </div>
+      </article>
 
-    </article>
+    </div>
 
-    <article class="product-card">
-
-      <div class="product-visual oil"></div>
-
-      <div class="product-meta">
-        <span>Ногти</span>
-        <span>568 ₽</span>
-      </div>
-
-      <h3 class="product-name">
-        Масло для кутикулы DOONAILS
-      </h3>
-
-      <div class="product-actions">
-        <button class="add-button" data-add="oil">
-          В корзину
-        </button>
-      </div>
-
-    </article>
-
-    <article class="product-card">
-
-      <div class="product-visual files"></div>
-
-      <div class="product-meta">
-        <span>Инструменты</span>
-        <span>543 ₽</span>
-      </div>
-
-      <h3 class="product-name">
-        Пилочки для ногтей DOONAILS, 10 шт.
-      </h3>
-
-      <div class="product-actions">
-        <button class="add-button" data-add="files">
-          В корзину
-        </button>
-      </div>
-
-    </article>
+    <button class="slider-arrow right" onclick="moveProducts(1)">›</button>
 
   </div>
 
-  <!-- КНОПКА КОРЗИНЫ ПОД ТОВАРАМИ -->
+  <button class="cart-link" onclick="openCart()">Корзина</button>
 
-  <div class="cart-section">
-    <button class="cart-button" id="openCart">
-      Корзина — <span id="cartCount">0</span>
-    </button>
+</section>
+
+<!-- ПОДРОБНАЯ СТРАНИЦА ТОВАРА -->
+
+<section class="product-detail" id="productDetail">
+
+  <div class="detail-navigation">
+    <button onclick="closeProduct()">‹ Назад к товарам</button>
+    <span>TEMPO / МАГАЗИН</span>
+    <button onclick="openCart()">Корзина</button>
+  </div>
+
+  <div class="detail-main">
+
+    <div class="detail-image-wrap">
+      <img id="detailImage" class="detail-image" src="" alt="">
+    </div>
+
+    <div>
+
+      <div class="detail-category" id="detailCategory"></div>
+
+      <h2 class="detail-title" id="detailTitle"></h2>
+      <div class="detail-subtitle" id="detailSubtitle"></div>
+
+      <div class="detail-description" id="detailDescription"></div>
+
+      <div class="detail-price" id="detailPrice"></div>
+
+      <div class="detail-actions">
+
+        <div class="detail-qty">
+          <button onclick="changeDetailQuantity(-1)">−</button>
+          <span id="detailQty">1</span>
+          <button onclick="changeDetailQuantity(1)">+</button>
+        </div>
+
+        <button class="add-cart" onclick="addDetailToCart()">
+          Добавить в корзину
+        </button>
+
+      </div>
+
+      <div class="detail-extra">
+        Самовывоз из студии TEMPO<br>
+        м. Выхино, Рязанский проспект, 101с5
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section class="product-info" id="productInfo" style="display:none">
+
+  <h2>Больше о вашем уходе</h2>
+
+  <div class="info-columns">
+
+    <div>
+      <h3>Состав</h3>
+      <p id="detailComposition"></p>
+    </div>
+
+    <div>
+      <h3>Как использовать</h3>
+      <p id="detailUsage"></p>
+    </div>
+
   </div>
 
 </section>
 
 </main>
 
-<!-- ПОДВАЛ -->
+<!-- КОРЗИНА -->
 
-<footer class="footer" id="contacts">
+<section class="cart-page" id="cartPage">
+
+  <div class="cart-heading">
+    <h1>Корзина</h1>
+    <p>адрес для самовывоза:</p>
+    <p>м. Выхино, Рязанский проспект, 101с5</p>
+  </div>
+
+  <div class="cart-products" id="cartProducts"></div>
+
+  <div class="cart-total" id="cartTotal"></div>
+
+  <button class="checkout" onclick="checkout()">
+    Оформить заказ
+  </button>
+
+  <div class="detail-navigation">
+    <button onclick="closeCart()">‹ Назад к товарам</button>
+    <span>TEMPO / МАГАЗИН</span>
+    <span>Корзина</span>
+  </div>
+
+</section>
+
+<footer id="contacts">
+  <div>
+    Контактный номер телефона<br>
+    +7 (***)-***-**-**
+  </div>
 
   <div>
-    <div class="footer-brand">TEMPO</div>
-    <p>Красота, которая вписывается в ваш ритм.</p>
+    email<br>
+    ************@mail.ru
   </div>
-
-  <div class="footer-links">
-    <a href="#services">Услуги</a>
-    <a href="#about">О студии</a>
-    <a href="#shop">Магазин</a>
-  </div>
-
 </footer>
-
-<!-- ВЫЕЗЖАЮЩАЯ КОРЗИНА -->
-
-<div class="overlay" id="overlay"></div>
-
-<aside class="cart-drawer" id="cartDrawer">
-
-  <div class="drawer-head">
-    <h2>Корзина</h2>
-    <button class="close-button" id="closeCart">×</button>
-  </div>
-
-  <div class="cart-items" id="cartItems"></div>
-  <div id="cartSummary"></div>
-
-</aside>
 
 <script>
 
-const products = {
+/* ТОВАРЫ */
+
+const productsData = {
 
   scrub: {
-    name: "Скраб для тела The Act с запахом кокоса",
+    name: "Скраб для тела",
+    subtitle: "с кокосом",
     price: 456,
-    icon: "✧"
+    category: "THE ACT / УХОД ЗА ТЕЛОМ",
+    description: "Соляной скраб-бальзам · 300 г. Морская соль отшелушивает кожу, а масла кокоса, ши, миндаля и авокадо помогают сохранить мягкость и увлажнённость. Густая текстура и тёплый аромат кокоса не оставят равнодушными.",
+    image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=900&q=85",
+    composition: "Морская соль, кокосовое масло, масло кокоса, каприлик/каприк триглицерид, масло сладкого миндаля, абразив скрабулы грецкого ореха, масло ши, глицерин стеарат, масло авокадо, витамин Е, отдушка.",
+    usage: "Нанесите на влажную кожу тела круговыми массажными движениями. Оставьте на 3 минуты. Смойте тёплой водой. Рекомендуемая частота: 2–3 раза в неделю."
   },
 
   oil: {
-    name: "Масло для кутикулы DOONAILS",
+    name: "Масло для кутикулы",
+    subtitle: "DOONAILS",
     price: 568,
-    icon: "❋"
+    category: "DOONAILS / УХОД ЗА НОГТЯМИ",
+    description: "Уходовое масло для кутикулы. Помогает смягчить кожу вокруг ногтей, поддерживает её ухоженный вид и делает ежедневный уход комфортнее.",
+    image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=900&q=85",
+    composition: "Уходовые масла и компоненты для смягчения кутикулы.",
+    usage: "Нанесите небольшое количество средства на кутикулу. Мягко распределите массажными движениями. Используйте регулярно."
   },
 
   files: {
-    name: "Пилочки для ногтей DOONAILS, 10 шт.",
+    name: "Пилочки для ногтей",
+    subtitle: "DOONAILS",
     price: 543,
-    icon: "⌁"
+    category: "DOONAILS / ИНСТРУМЕНТЫ",
+    description: "Набор пилочек для ногтей DOONAILS. Удобный инструмент для домашнего ухода и поддержания аккуратной формы ногтей.",
+    image: "https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=900&q=85",
+    composition: "Абразивный материал, основа и защитное покрытие.",
+    usage: "Используйте для аккуратного придания формы ногтям. Двигайтесь плавно, без сильного нажима."
   }
 
 };
 
-const cart = {};
+let cart = {};
+let quantities = {
+  scrub: 1,
+  oil: 1,
+  files: 1
+};
 
-const drawer = document.getElementById("cartDrawer");
-const overlay = document.getElementById("overlay");
+let currentProduct = null;
+let detailQuantity = 1;
 
-function addToCart(id) {
-  cart[id] = (cart[id] || 0) + 1;
-  renderCart();
+/* МЕНЮ */
+
+function toggleMenu() {
+  document.getElementById("navigation").classList.toggle("open");
 }
 
-function changeQty(id, delta) {
+document.querySelectorAll("nav a").forEach(link => {
+  link.addEventListener("click", () => {
+    document.getElementById("navigation").classList.remove("open");
+  });
+});
+
+/* ИЗБРАННОЕ */
+
+function toggleHeart(button) {
+  button.textContent =
+    button.textContent === "♡" ? "♥" : "♡";
+}
+
+/* КОЛИЧЕСТВО */
+
+function changeQuantity(id, delta) {
+  quantities[id] = Math.max(1, quantities[id] + delta);
+  document.getElementById("qty-" + id).textContent = quantities[id];
+}
+
+function changeDetailQuantity(delta) {
+  detailQuantity = Math.max(1, detailQuantity + delta);
+  document.getElementById("detailQty").textContent = detailQuantity;
+}
+
+/* ОТКРЫТИЕ ТОВАРА */
+
+function openProduct(id) {
+
+  currentProduct = id;
+  detailQuantity = 1;
+
+  const p = productsData[id];
+
+  document.getElementById("mainSite").style.display = "none";
+  document.getElementById("productDetail").classList.add("active");
+  document.getElementById("productInfo").style.display = "block";
+
+  document.getElementById("detailImage").src = p.image;
+  document.getElementById("detailCategory").textContent = p.category;
+  document.getElementById("detailTitle").textContent = p.name;
+  document.getElementById("detailSubtitle").textContent = p.subtitle;
+  document.getElementById("detailDescription").textContent = p.description;
+  document.getElementById("detailPrice").textContent = p.price + " ₽";
+  document.getElementById("detailComposition").textContent = p.composition;
+  document.getElementById("detailUsage").textContent = p.usage;
+  document.getElementById("detailQty").textContent = detailQuantity;
+
+  window.scrollTo(0, 0);
+}
+
+function closeProduct() {
+  document.getElementById("mainSite").style.display = "block";
+  document.getElementById("productDetail").classList.remove("active");
+  document.getElementById("productInfo").style.display = "none";
+  window.scrollTo(0, document.getElementById("shop").offsetTop);
+}
+
+/* ДОБАВЛЕНИЕ В КОРЗИНУ */
+
+function addDetailToCart() {
+  if (!currentProduct) return;
+
+  cart[currentProduct] =
+    (cart[currentProduct] || 0) + detailQuantity;
+
+  alert("Товар добавлен в корзину!");
+}
+
+/* КОРЗИНА */
+
+function openCart() {
+
+  document.getElementById("mainSite").style.display = "none";
+  document.getElementById("productDetail").classList.remove("active");
+  document.getElementById("productInfo").style.display = "none";
+
+  document.getElementById("cartPage").classList.add("active");
+
+  renderCart();
+
+  window.scrollTo(0, 0);
+}
+
+function closeCart() {
+  document.getElementById("cartPage").classList.remove("active");
+  document.getElementById("mainSite").style.display = "block";
+  window.scrollTo(0, document.getElementById("shop").offsetTop);
+}
+
+function renderCart() {
+
+  const container = document.getElementById("cartProducts");
+  const totalElement = document.getElementById("cartTotal");
+
+  const ids = Object.keys(cart);
+
+  if (!ids.length) {
+    container.innerHTML = "<p>Корзина пока пуста.</p>";
+    totalElement.textContent = "";
+    return;
+  }
+
+  container.innerHTML = ids.map(id => {
+
+    const p = productsData[id];
+
+    return `
+      <div class="cart-product">
+
+        <img src="${p.image}" alt="${p.name}">
+
+        <h3>${p.name}</h3>
+
+        <p>${p.price}р</p>
+
+        <p>нет в наличии в данной точке</p>
+
+        <div>
+          <button onclick="updateCart('${id}',-1)">−</button>
+          ${cart[id]}
+          <button onclick="updateCart('${id}',1)">+</button>
+        </div>
+
+      </div>
+    `;
+
+  }).join("");
+
+  const total = ids.reduce((sum,id) => {
+    return sum + productsData[id].price * cart[id];
+  }, 0);
+
+  totalElement.textContent = "Итого: " + total + " ₽";
+}
+
+function updateCart(id, delta) {
+
   cart[id] = (cart[id] || 0) + delta;
 
   if (cart[id] <= 0) {
@@ -1046,152 +1331,27 @@ function changeQty(id, delta) {
   renderCart();
 }
 
-function renderCart() {
-
-  const count = Object.values(cart)
-    .reduce((a,b) => a+b, 0);
-
-  document.getElementById("cartCount").textContent = count;
-
-  const items = document.getElementById("cartItems");
-  const summary = document.getElementById("cartSummary");
-
-  const ids = Object.keys(cart);
-
-  if (!ids.length) {
-
-    items.innerHTML =
-      '<div class="empty-cart">Корзина пока пуста.</div>';
-
-    summary.innerHTML = "";
+function checkout() {
+  if (!Object.keys(cart).length) {
+    alert("Корзина пуста.");
     return;
-
   }
 
-  items.innerHTML = ids.map(id => {
-
-    const p = products[id];
-
-    return `
-      <div class="cart-item">
-
-        <div class="cart-thumb">${p.icon}</div>
-
-        <div>
-          <strong>${p.name}</strong>
-          <p>${p.price} ₽</p>
-
-          <div class="qty">
-            <button data-minus="${id}">−</button>
-            <span>${cart[id]}</span>
-            <button data-plus="${id}">+</button>
-          </div>
-        </div>
-
-        <button class="remove" data-remove="${id}">
-          Удалить
-        </button>
-
-      </div>
-    `;
-
-  }).join("");
-
-  const total = ids.reduce((sum,id) => {
-    return sum + products[id].price * cart[id];
-  }, 0);
-
-  summary.innerHTML = `
-    <div class="cart-total">
-      <span>Итого</span>
-      <strong>${total} ₽</strong>
-    </div>
-
-    <button class="checkout" id="checkout">
-      Оформить заказ
-    </button>
-  `;
-
+  alert("Это демонстрационный сайт. Оформление заказа пока не подключено.");
 }
 
-function openCart() {
-  drawer.classList.add("open");
-  overlay.classList.add("open");
-}
+/* ПЕРЕКЛЮЧЕНИЕ КАРТОЧЕК */
 
-function closeCart() {
-  drawer.classList.remove("open");
-  overlay.classList.remove("open");
-}
+function moveProducts(direction) {
 
-document.getElementById("openCart")
-  .addEventListener("click", openCart);
+  const container = document.getElementById("products");
 
-document.getElementById("closeCart")
-  .addEventListener("click", closeCart);
-
-overlay.addEventListener("click", closeCart);
-
-document.addEventListener("click", e => {
-
-  const add = e.target.closest("[data-add]");
-
-  if (add) {
-    addToCart(add.dataset.add);
-  }
-
-  const plus = e.target.closest("[data-plus]");
-
-  if (plus) {
-    changeQty(plus.dataset.plus, 1);
-  }
-
-  const minus = e.target.closest("[data-minus]");
-
-  if (minus) {
-    changeQty(minus.dataset.minus, -1);
-  }
-
-  const remove = e.target.closest("[data-remove]");
-
-  if (remove) {
-    delete cart[remove.dataset.remove];
-    renderCart();
-  }
-
-  if (e.target.id === "checkout") {
-    alert("Это демонстрационная корзина.");
-  }
-
-});
-
-/* МОБИЛЬНОЕ МЕНЮ */
-
-document.getElementById("menuToggle")
-  .addEventListener("click", () => {
-
-    const nav = document.getElementById("mainNav");
-
-    nav.style.display =
-      nav.style.display === "flex" ? "none" : "flex";
-
+  container.scrollBy({
+    left: direction * 180,
+    behavior: "smooth"
   });
 
-/* ЗАКРЫТИЕ МОБИЛЬНОГО МЕНЮ ПОСЛЕ ПЕРЕХОДА */
-
-document.querySelectorAll(".nav a").forEach(link => {
-
-  link.addEventListener("click", () => {
-
-    if (window.innerWidth <= 640) {
-      document.getElementById("mainNav").style.display = "none";
-    }
-
-  });
-
-});
-
-renderCart();
+}
 
 </script>
 
