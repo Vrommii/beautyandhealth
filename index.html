@@ -34,8 +34,6 @@ button, select { font: inherit; }
 button { cursor: pointer; }
 a { color: inherit; text-decoration: none; }
 
-/* HEADER */
-
 header {
   position: absolute;
   top: 0;
@@ -325,6 +323,24 @@ nav a:hover { opacity: .65; }
   margin: 0 3px 6px;
 }
 
+.quick-add {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  background: var(--green);
+  color: var(--brown);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.quick-add:hover {
+  background: var(--cream);
+}
+
 .slider-arrow {
   position: absolute;
   top: 43%;
@@ -344,7 +360,7 @@ nav a:hover { opacity: .65; }
 
 .cart-link {
   display: block;
-  width: 180px;
+  width: 220px;
   text-align: center;
   margin: 20px auto 0;
   padding: 10px;
@@ -565,11 +581,29 @@ nav a:hover { opacity: .65; }
 .cart-product h3 { font-size: 16px; margin: 8px 0; }
 .cart-product p { font-size: 14px; margin: 5px; }
 
-.cart-product button {
+.cart-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.cart-controls button {
+  background: transparent;
+  border: 1px solid var(--cream);
+  color: var(--cream);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+.cart-remove {
   background: transparent;
   border: 0;
   color: var(--cream);
-  font-size: 18px;
+  text-decoration: underline;
+  font-size: 12px;
 }
 
 .cart-total {
@@ -589,7 +623,12 @@ nav a:hover { opacity: .65; }
   font-size: 16px;
 }
 
-.empty-cart { padding: 20px; }
+.empty-cart {
+  padding: 30px;
+  font-size: 18px;
+  grid-column: 1 / -1;
+  text-align: center;
+}
 
 /* FOOTER */
 
@@ -672,21 +711,8 @@ footer {
   .shop { padding: 25px 18px; }
   .shop-description { font-size: 14px; }
 
-  .products {
-    display: flex;
-    gap: 12px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-  }
-
-  .product-card {
-    flex: 0 0 75%;
-    scroll-snap-align: start;
-  }
-
+  .product-card { flex: 0 0 75%; }
   .product-image { height: 190px; }
-
-  .slider-arrow { display: block; }
 
   .detail-main { grid-template-columns: 1fr; }
   .detail-image { height: 260px; }
@@ -725,6 +751,8 @@ footer {
     <a href="#about">О студии</a>
     <a href="#shop">Косметика</a>
     <a href="#contacts">Контакты</a>
+    <button class="cart-link" style="width:auto;margin:0;padding:8px 14px;font-size:14px"
+      onclick="openCart()">Корзина (<span id="cartCount">0</span>)</button>
   </nav>
 
   <button class="menu-button" onclick="toggleMenu()">☰</button>
@@ -747,15 +775,14 @@ footer {
   </div>
 
   <div class="hero-icons">
-    <div class="hero-icon"><span>♧</span>Различные виды<br>маникюра</div>
-    <div class="hero-icon"><span>♙</span>Различные виды<br>педикюра</div>
-    <div class="hero-icon"><span>♜</span>Косметические<br>средства</div>
+    <div class="hero-icon"><span>💅</span>Различные виды<br>маникюра</div>
+    <div class="hero-icon"><span>🦶</span>Различные виды<br>педикюра</div>
+    <div class="hero-icon"><span>🌿</span>Косметические<br>средства</div>
   </div>
 </section>
 
 <section class="about" id="about">
   <div class="about-text">
-
     <p>
       TEMPO — это маникюрный салон для тех, кто ценит своё время и не привык ждать. Мы находимся прямо у метро, работаем без записи и принимаем клиентов в порядке живой очереди: зашли по пути — и вышли с ухоженными ногтями, лёгкой походкой и настроением, с которым хочется свернуть горы.
     </p>
@@ -777,22 +804,22 @@ footer {
           <span>Пушкинская улица, 2с3</span>
         </div>
         <div class="location">
-          <strong>м.Теплый стан</strong>
+          <strong>м. Тёплый Стан</strong>
           <span>Профсоюзная улица, 129А</span>
         </div>
         <div class="location">
-          <strong>м.Царицыно</strong>
+          <strong>м. Царицыно</strong>
           <span>Весёлая улица, 2</span>
         </div>
       </div>
 
       <div>
         <div class="location">
-          <strong>м.Некрасовка</strong>
+          <strong>м. Некрасовка</strong>
           <span>Рождественская улица, 20</span>
         </div>
         <div class="location">
-          <strong>м.Выхино</strong>
+          <strong>м. Выхино</strong>
           <span>Рязанский проспект, 101с5</span>
         </div>
       </div>
@@ -800,8 +827,8 @@ footer {
   </div>
 
   <img class="about-photo"
-  src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=900&q=85"
-  alt="Интерьер салона">
+    src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=900&q=85"
+    alt="Интерьер салона">
 </section>
 
 <section class="services" id="services">
@@ -872,8 +899,8 @@ footer {
     </div>
 
     <img class="master-photo"
-    src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=900&q=85"
-    alt="Работа мастера">
+      src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=900&q=85"
+      alt="Работа мастера">
   </div>
 </section>
 
@@ -893,6 +920,7 @@ footer {
         <img class="product-image" src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=85" alt="Скраб">
         <div class="product-price">456 ₽</div>
         <div class="product-name">Скраб для тела The Act с запахом кокоса</div>
+        <button class="quick-add" onclick="event.stopPropagation(); addToCart('scrub')">Добавить в корзину</button>
       </article>
 
       <article class="product-card" onclick="openProduct('oil')">
@@ -900,6 +928,7 @@ footer {
         <img class="product-image" src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=700&q=85" alt="Масло">
         <div class="product-price">568 ₽</div>
         <div class="product-name">Масло для кутикулы DOONAILS</div>
+        <button class="quick-add" onclick="event.stopPropagation(); addToCart('oil')">Добавить в корзину</button>
       </article>
 
       <article class="product-card" onclick="openProduct('files')">
@@ -907,6 +936,7 @@ footer {
         <img class="product-image" src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=700&q=85" alt="Пилочки">
         <div class="product-price">543 ₽</div>
         <div class="product-name">Пилочки для ногтей 10 шт DOONAILS</div>
+        <button class="quick-add" onclick="event.stopPropagation(); addToCart('files')">Добавить в корзину</button>
       </article>
 
       <article class="product-card" onclick="openProduct('cream')">
@@ -914,6 +944,7 @@ footer {
         <img class="product-image" src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=700&q=85" alt="Крем">
         <div class="product-price">690 ₽</div>
         <div class="product-name">Увлажняющий крем для рук</div>
+        <button class="quick-add" onclick="event.stopPropagation(); addToCart('cream')">Добавить в корзину</button>
       </article>
 
       <article class="product-card" onclick="openProduct('mask')">
@@ -921,6 +952,7 @@ footer {
         <img class="product-image" src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=700&q=85" alt="Маска">
         <div class="product-price">750 ₽</div>
         <div class="product-name">Питательная маска для рук</div>
+        <button class="quick-add" onclick="event.stopPropagation(); addToCart('mask')">Добавить в корзину</button>
       </article>
 
       <article class="product-card" onclick="openProduct('serum')">
@@ -928,6 +960,7 @@ footer {
         <img class="product-image" src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=85" alt="Сыворотка">
         <div class="product-price">890 ₽</div>
         <div class="product-name">Сыворотка для ухода за ногтями</div>
+        <button class="quick-add" onclick="event.stopPropagation(); addToCart('serum')">Добавить в корзину</button>
       </article>
 
     </div>
@@ -935,7 +968,9 @@ footer {
     <button class="slider-arrow right" onclick="moveProducts(1)">›</button>
   </div>
 
-  <button class="cart-link" onclick="openCart()">Корзина</button>
+  <button class="cart-link" onclick="openCart()">
+    Корзина (<span id="cartCount">0</span>)
+  </button>
 </section>
 </main>
 
@@ -962,8 +997,7 @@ footer {
 
       <div class="pickup-box">
         <label for="detailPickup">Выберите точку самовывоза:</label>
-        <select class="pickup-select" id="detailPickup" onchange="changePickup(this.value)">
-        </select>
+        <select class="pickup-select" id="detailPickup" onchange="changePickup(this.value)"></select>
       </div>
 
       <div class="detail-actions">
@@ -1006,8 +1040,7 @@ footer {
 
   <div class="cart-pickup">
     <label for="cartPickup">Точка самовывоза для заказа:</label>
-    <select class="pickup-select" id="cartPickup" onchange="changePickup(this.value)">
-    </select>
+    <select class="pickup-select" id="cartPickup" onchange="changePickup(this.value)"></select>
   </div>
 
   <div class="cart-products" id="cartProducts"></div>
@@ -1061,29 +1094,6 @@ const pickupLocations = [
 ];
 
 let selectedPickup = 0;
-
-/* СОЗДАНИЕ СПИСКА АДРЕСОВ */
-
-function fillPickupSelects() {
-  const options = pickupLocations.map((location, index) => `
-    <option value="${index}">
-      ${location.name} — ${location.address}
-    </option>
-  `).join("");
-
-  document.getElementById("detailPickup").innerHTML = options;
-  document.getElementById("cartPickup").innerHTML = options;
-
-  document.getElementById("detailPickup").value = selectedPickup;
-  document.getElementById("cartPickup").value = selectedPickup;
-}
-
-function changePickup(value) {
-  selectedPickup = Number(value);
-
-  document.getElementById("detailPickup").value = selectedPickup;
-  document.getElementById("cartPickup").value = selectedPickup;
-}
 
 /* ТОВАРЫ */
 
@@ -1155,9 +1165,34 @@ const productsData = {
   }
 };
 
+/* СОСТОЯНИЕ КОРЗИНЫ */
+
 let cart = {};
 let currentProduct = null;
 let detailQuantity = 1;
+
+/* СПИСОК АДРЕСОВ */
+
+function fillPickupSelects() {
+  const options = pickupLocations.map((location, index) => `
+    <option value="${index}">
+      ${location.name} — ${location.address}
+    </option>
+  `).join("");
+
+  document.getElementById("detailPickup").innerHTML = options;
+  document.getElementById("cartPickup").innerHTML = options;
+
+  document.getElementById("detailPickup").value = selectedPickup;
+  document.getElementById("cartPickup").value = selectedPickup;
+}
+
+function changePickup(value) {
+  selectedPickup = Number(value);
+
+  document.getElementById("detailPickup").value = selectedPickup;
+  document.getElementById("cartPickup").value = selectedPickup;
+}
 
 /* МЕНЮ */
 
@@ -1178,20 +1213,34 @@ function toggleHeart(button) {
     button.textContent === "♡" ? "♥" : "♡";
 }
 
-/* КАРУСЕЛЬ ТОВАРОВ */
+/* КАРУСЕЛЬ */
 
 function moveProducts(direction) {
   const container = document.getElementById("products");
+  const maxScroll = container.scrollWidth - container.clientWidth;
 
-  container.scrollBy({
-    left: direction * container.clientWidth * 0.8,
-    behavior: "smooth"
-  });
+  if (maxScroll <= 0) return;
+
+  const step = container.clientWidth * 0.8;
+  const next = container.scrollLeft + direction * step;
+
+  if (direction > 0 && container.scrollLeft >= maxScroll - 5) {
+    container.scrollTo({ left: 0, behavior: "smooth" });
+  } else if (direction < 0 && container.scrollLeft <= 5) {
+    container.scrollTo({ left: maxScroll, behavior: "smooth" });
+  } else {
+    container.scrollTo({
+      left: Math.max(0, Math.min(maxScroll, next)),
+      behavior: "smooth"
+    });
+  }
 }
 
 /* СТРАНИЦА ТОВАРА */
 
 function openProduct(id) {
+  if (!productsData[id]) return;
+
   currentProduct = id;
   detailQuantity = 1;
 
@@ -1203,6 +1252,7 @@ function openProduct(id) {
   document.getElementById("cartPage").classList.remove("active");
 
   document.getElementById("detailImage").src = p.image;
+  document.getElementById("detailImage").alt = p.name;
   document.getElementById("detailCategory").textContent = p.category;
   document.getElementById("detailTitle").textContent = p.name;
   document.getElementById("detailSubtitle").textContent = p.subtitle;
@@ -1231,16 +1281,52 @@ function changeDetailQuantity(delta) {
 
 /* ДОБАВЛЕНИЕ В КОРЗИНУ */
 
+/* Эта функция вызывается кнопками прямо в каталоге */
+
+function addToCart(id) {
+  if (!productsData[id]) {
+    alert("Такого товара не существует");
+    return;
+  }
+
+  cart[id] = (cart[id] || 0) + 1;
+
+  updateCartCount();
+  alert(productsData[id].name + " добавлен в корзину!");
+}
+
+/* Добавление со страницы товара */
+
 function addDetailToCart() {
-  if (!currentProduct) return;
+  if (!currentProduct || !productsData[currentProduct]) {
+    alert("Сначала выберите товар");
+    return;
+  }
 
   cart[currentProduct] =
     (cart[currentProduct] || 0) + detailQuantity;
 
+  updateCartCount();
+
   alert("Товар добавлен в корзину!");
 }
 
-/* КОРЗИНА */
+/* СЧЁТЧИК КОРЗИНЫ */
+
+function updateCartCount() {
+  const count = Object.values(cart).reduce(
+    (sum, quantity) => sum + quantity,
+    0
+  );
+
+  const counter = document.getElementById("cartCount");
+
+  if (counter) {
+    counter.textContent = count;
+  }
+}
+
+/* ОТКРЫТИЕ КОРЗИНЫ */
 
 function openCart() {
   document.getElementById("mainSite").style.display = "none";
@@ -1260,7 +1346,7 @@ function closeCart() {
   window.scrollTo(0, document.getElementById("shop").offsetTop);
 }
 
-/* ОТОБРАЖЕНИЕ ТОВАРОВ */
+/* ОТОБРАЖЕНИЕ КОРЗИНЫ */
 
 function renderCart() {
   const container = document.getElementById("cartProducts");
@@ -1269,78 +1355,128 @@ function renderCart() {
   const ids = Object.keys(cart);
 
   if (!ids.length) {
-    container.innerHTML = '<div class="empty-cart">Корзина пока пуста.</div>';
+    container.innerHTML = `
+      <div class="empty-cart">
+        Корзина пока пуста.<br>
+        Перейдите в каталог и добавьте понравившиеся товары.
+      </div>
+    `;
+
     totalElement.textContent = "";
     return;
   }
 
+  let total = 0;
+
   container.innerHTML = ids.map(id => {
     const p = productsData[id];
+    const quantity = cart[id];
+    const itemTotal = p.price * quantity;
+
+    total += itemTotal;
 
     return `
       <div class="cart-product">
         <img src="${p.image}" alt="${p.name}">
+
         <h3>${p.name}</h3>
-        <p>${p.price} ₽</p>
-        <div>
-          <button onclick="updateCart('${id}',-1)">−</button>
-          ${cart[id]}
-          <button onclick="updateCart('${id}',1)">+</button>
+
+        <p>${p.price.toLocaleString("ru-RU")} ₽ за штуку</p>
+
+        <p><strong>
+          ${itemTotal.toLocaleString("ru-RU")} ₽
+        </strong></p>
+
+        <div class="cart-controls">
+          <button onclick="updateCart('${id}', -1)">−</button>
+          <strong>${quantity}</strong>
+          <button onclick="updateCart('${id}', 1)">+</button>
         </div>
+
+        <button class="cart-remove"
+          onclick="removeFromCart('${id}')">
+          Удалить товар
+        </button>
       </div>
     `;
   }).join("");
 
-  const total = ids.reduce((sum, id) => {
-    return sum + productsData[id].price * cart[id];
-  }, 0);
+  totalElement.textContent =
+    "Итого: " + total.toLocaleString("ru-RU") + " ₽";
 
-  totalElement.textContent = "Итого: " + total + " ₽";
+  updateCartCount();
 }
 
+/* ИЗМЕНЕНИЕ КОЛИЧЕСТВА */
+
 function updateCart(id, delta) {
-  cart[id] = (cart[id] || 0) + delta;
+  if (!cart[id]) return;
+
+  cart[id] += delta;
 
   if (cart[id] <= 0) {
     delete cart[id];
   }
 
+  updateCartCount();
+  renderCart();
+}
+
+/* УДАЛЕНИЕ ТОВАРА */
+
+function removeFromCart(id) {
+  if (!cart[id]) return;
+
+  delete cart[id];
+
+  updateCartCount();
   renderCart();
 }
 
 /* ОФОРМЛЕНИЕ ЗАКАЗА */
 
 function checkout() {
-  if (!Object.keys(cart).length) {
+  const ids = Object.keys(cart);
+
+  if (!ids.length) {
     alert("Корзина пуста.");
     return;
   }
 
   const location = pickupLocations[selectedPickup];
 
-  const orderItems = Object.keys(cart).map(id => {
-    const p = productsData[id];
-    return `${p.name} — ${cart[id]} шт.`;
-  }).join("\n");
+  let orderItems = "";
+  let total = 0;
 
-  const total = Object.keys(cart).reduce((sum, id) => {
-    return sum + productsData[id].price * cart[id];
-  }, 0);
+  ids.forEach(id => {
+    const p = productsData[id];
+    const quantity = cart[id];
+    const itemTotal = p.price * quantity;
+
+    total += itemTotal;
+
+    orderItems +=
+      p.name + " — " + quantity + " шт. — " +
+      itemTotal.toLocaleString("ru-RU") + " ₽\n";
+  });
 
   alert(
     "Ваш заказ:\n\n" +
     orderItems +
-    "\n\nТочка самовывоза:\n" +
+    "\nТочка самовывоза:\n" +
     location.name + "\n" +
     location.address +
-    "\n\nИтого: " + total + " ₽" +
-    "\n\nЭто демонстрационный сайт. Реальное оформление заказа пока не подключено."
+    "\n\nИтого: " +
+    total.toLocaleString("ru-RU") + " ₽" +
+    "\n\nЭто демонстрационная версия сайта. " +
+    "Для реального оформления заказов потребуется подключить обработку заказов."
   );
 }
 
 /* ЗАПУСК */
 
 fillPickupSelects();
+updateCartCount();
 
 </script>
 
