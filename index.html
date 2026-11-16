@@ -26,7 +26,7 @@ body {
   margin: 0;
   background: var(--brown);
   color: var(--cream);
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat, sans-serif;
   font-weight: 300;
 }
 
@@ -71,14 +71,12 @@ nav a:hover { opacity: .65; }
   padding: 8px 12px;
 }
 
-/* HERO */
-
 .hero {
   min-height: 570px;
   padding: 135px 5.5% 45px;
   background:
-    linear-gradient(90deg, rgba(24,22,16,.38), rgba(24,22,16,.05)),
-    url("hero.jpg") center / cover no-repeat;
+    linear-gradient(90deg,rgba(24,22,16,.38),rgba(24,22,16,.05)),
+    url("hero.jpg") center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -87,7 +85,7 @@ nav a:hover { opacity: .65; }
 
 .hero h1 {
   color: var(--green);
-  font-size: clamp(65px, 8vw, 96px);
+  font-size: clamp(65px,8vw,96px);
   line-height: 1.05;
   font-weight: 300;
   margin: 0;
@@ -130,9 +128,12 @@ nav a:hover { opacity: .65; }
   font-size: 10px;
 }
 
-.hero-icon span { font-size: 28px; }
-
-/* ABOUT */
+.hero-icon img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+}
 
 .about {
   background: var(--green);
@@ -178,8 +179,6 @@ nav a:hover { opacity: .65; }
 }
 
 .location span { font-size: 24px; }
-
-/* SERVICES */
 
 .services {
   background: var(--brown);
@@ -240,8 +239,6 @@ nav a:hover { opacity: .65; }
   margin-top: 30px;
 }
 
-/* SHOP */
-
 .shop {
   background: var(--brown);
   padding: 30px 5% 35px;
@@ -275,7 +272,7 @@ nav a:hover { opacity: .65; }
 .products::-webkit-scrollbar { display: none; }
 
 .product-card {
-  flex: 0 0 calc((100% - 44px) / 3);
+  flex: 0 0 calc((100% - 44px)/3);
   min-width: 0;
   scroll-snap-align: start;
   position: relative;
@@ -327,19 +324,16 @@ nav a:hover { opacity: .65; }
   width: 100%;
   margin-top: 12px;
   padding: 12px;
-  border: none;
+  border: 0;
   border-radius: 25px;
   background: var(--green);
   color: var(--brown);
   font-size: 14px;
   font-weight: 500;
-  cursor: pointer;
   transition: .2s;
 }
 
-.quick-add:hover {
-  background: var(--cream);
-}
+.quick-add:hover { background: var(--cream); }
 
 .slider-arrow {
   position: absolute;
@@ -372,8 +366,6 @@ nav a:hover { opacity: .65; }
 }
 
 .cart-link:hover { background: #758B74; }
-
-/* PRODUCT PAGE */
 
 .product-detail {
   display: none;
@@ -422,7 +414,10 @@ nav a:hover { opacity: .65; }
   display: block;
 }
 
-.detail-category { font-size: 12px; margin-bottom: 12px; }
+.detail-category {
+  font-size: 12px;
+  margin-bottom: 12px;
+}
 
 .detail-title {
   font-size: 36px;
@@ -430,7 +425,10 @@ nav a:hover { opacity: .65; }
   margin: 0 0 5px;
 }
 
-.detail-subtitle { font-size: 26px; margin: 0 0 15px; }
+.detail-subtitle {
+  font-size: 26px;
+  margin: 0 0 15px;
+}
 
 .detail-description {
   font-size: 16px;
@@ -477,13 +475,13 @@ nav a:hover { opacity: .65; }
   font-size: 14px;
 }
 
-.detail-extra { font-size: 12px; line-height: 1.6; margin-top: 18px; }
-
-/* PICKUP SELECT */
-
-.pickup-box {
-  margin: 18px 0;
+.detail-extra {
+  font-size: 12px;
+  line-height: 1.6;
+  margin-top: 18px;
 }
+
+.pickup-box { margin: 18px 0; }
 
 .pickup-box label {
   display: block;
@@ -502,8 +500,6 @@ nav a:hover { opacity: .65; }
   outline: none;
   font-size: 14px;
 }
-
-/* PRODUCT INFO */
 
 .product-info {
   background: var(--cream);
@@ -527,8 +523,6 @@ nav a:hover { opacity: .65; }
 
 .info-columns h3 { font-size: 18px; }
 
-/* CART */
-
 .cart-page {
   display: none;
   min-height: 100vh;
@@ -544,12 +538,17 @@ nav a:hover { opacity: .65; }
   padding: 18px 3%;
 }
 
-.cart-heading h1 { font-size: 36px; margin: 0; }
-.cart-heading p { font-size: 13px; margin: 3px 0 0; }
-
-.cart-pickup {
-  padding: 20px 3%;
+.cart-heading h1 {
+  font-size: 36px;
+  margin: 0;
 }
+
+.cart-heading p {
+  font-size: 13px;
+  margin: 3px 0 0;
+}
+
+.cart-pickup { padding: 20px 3%; }
 
 .cart-pickup label {
   display: block;
@@ -559,7 +558,7 @@ nav a:hover { opacity: .65; }
 
 .cart-products {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3,1fr);
   gap: 22px;
   padding: 10px 3% 25px;
 }
@@ -578,8 +577,15 @@ nav a:hover { opacity: .65; }
   border-radius: 16px;
 }
 
-.cart-product h3 { font-size: 16px; margin: 8px 0; }
-.cart-product p { font-size: 14px; margin: 5px; }
+.cart-product h3 {
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+.cart-product p {
+  font-size: 14px;
+  margin: 5px;
+}
 
 .cart-controls {
   display: flex;
@@ -626,11 +632,9 @@ nav a:hover { opacity: .65; }
 .empty-cart {
   padding: 30px;
   font-size: 18px;
-  grid-column: 1 / -1;
+  grid-column: 1/-1;
   text-align: center;
 }
-
-/* FOOTER */
 
 footer {
   background: var(--cream);
@@ -640,8 +644,6 @@ footer {
   justify-content: space-between;
   font-size: 14px;
 }
-
-/* RESPONSIVE */
 
 @media(max-width:800px) {
   .logo { width: 140px; }
@@ -653,13 +655,16 @@ footer {
   .services-top { flex-direction: column; }
   .master-photo { width: 100%; height: 350px; margin: 0; }
   .product-image { height: 170px; }
-  .product-card { flex-basis: calc((100% - 22px) / 2); }
+  .product-card { flex-basis: calc((100% - 22px)/2); }
 }
 
 @media(max-width:650px) {
-  header { min-height: 65px; padding: 8px 15px; }
-  .logo { width: 135px; }
+  header {
+    min-height: 65px;
+    padding: 8px 15px;
+  }
 
+  .logo { width: 135px; }
   .menu-button { display: block; }
 
   nav {
@@ -688,17 +693,15 @@ footer {
   .hero h1 { font-size: 58px; }
   .hero-main-text { font-size: 23px; }
   .hero-small-text { font-size: 17px; }
-
-  .hero-icon {
-    width: 80px;
-    min-height: 75px;
-    font-size: 8px;
-  }
+  .hero-icon { width: 80px; min-height: 75px; font-size: 8px; }
+  .hero-icon img { width: 42px; height: 42px; }
 
   .about { padding: 25px 18px; }
   .about-text { font-size: 14px; }
 
-  .about h2, .services h2, .shop h2 { font-size: 32px; }
+  .about h2,
+  .services h2,
+  .shop h2 { font-size: 32px; }
 
   .locations { gap: 8px; }
   .location strong { font-size: 17px; }
@@ -719,13 +722,20 @@ footer {
   .detail-title { font-size: 27px; }
   .detail-description { font-size: 14px; }
 
-  .detail-navigation { font-size: 9px; padding: 10px; }
+  .detail-navigation {
+    font-size: 9px;
+    padding: 10px;
+  }
+
   .detail-navigation button { font-size: 9px; }
 
-  .info-columns { grid-template-columns: 1fr; gap: 15px; }
+  .info-columns {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
 
   .cart-products {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2,1fr);
     gap: 10px;
     padding: 15px;
   }
@@ -734,7 +744,10 @@ footer {
   .cart-product h3 { font-size: 12px; }
   .cart-heading h1 { font-size: 28px; }
 
-  footer { flex-direction: column; gap: 12px; }
+  footer {
+    flex-direction: column;
+    gap: 12px;
+  }
 }
 </style>
 </head>
@@ -751,8 +764,10 @@ footer {
     <a href="#about">О студии</a>
     <a href="#shop">Косметика</a>
     <a href="#contacts">Контакты</a>
-    <button class="cart-link" style="width:auto;margin:0;padding:8px 14px;font-size:14px"
-      onclick="openCart()">Корзина (<span id="cartCount">0</span>)</button>
+
+    <button class="cart-link" style="width:auto;margin:0;padding:8px 14px;font-size:14px" onclick="openCart()">
+      Корзина (<span id="cartCount">0</span>)
+    </button>
   </nav>
 
   <button class="menu-button" onclick="toggleMenu()">☰</button>
@@ -775,14 +790,26 @@ footer {
   </div>
 
   <div class="hero-icons">
-    <div class="hero-icon"><span>💅</span>Различные виды<br>маникюра</div>
-    <div class="hero-icon"><span>🦶</span>Различные виды<br>педикюра</div>
-    <div class="hero-icon"><span>🌿</span>Косметические<br>средства</div>
+    <div class="hero-icon">
+      <img src="tempo_images/manicure.png" alt="Маникюр">
+      Различные виды<br>маникюра
+    </div>
+
+    <div class="hero-icon">
+      <img src="tempo_images/pedicure.png" alt="Педикюр">
+      Различные виды<br>педикюра
+    </div>
+
+    <div class="hero-icon">
+      <img src="tempo_images/cosmetics.png" alt="Косметические средства">
+      Косметические<br>средства
+    </div>
   </div>
 </section>
 
 <section class="about" id="about">
   <div class="about-text">
+
     <p>
       TEMPO — это маникюрный салон для тех, кто ценит своё время и не привык ждать. Мы находимся прямо у метро, работаем без записи и принимаем клиентов в порядке живой очереди: зашли по пути — и вышли с ухоженными ногтями, лёгкой походкой и настроением, с которым хочется свернуть горы.
     </p>
@@ -803,10 +830,12 @@ footer {
           <strong>Щербинка</strong>
           <span>Пушкинская улица, 2с3</span>
         </div>
+
         <div class="location">
           <strong>м. Тёплый Стан</strong>
           <span>Профсоюзная улица, 129А</span>
         </div>
+
         <div class="location">
           <strong>м. Царицыно</strong>
           <span>Весёлая улица, 2</span>
@@ -818,6 +847,7 @@ footer {
           <strong>м. Некрасовка</strong>
           <span>Рождественская улица, 20</span>
         </div>
+
         <div class="location">
           <strong>м. Выхино</strong>
           <span>Рязанский проспект, 101с5</span>
@@ -896,6 +926,7 @@ footer {
           Гигиеническая обработка стоп и ногтей с акцентом на комфорт и здоровье: удаление огрубевшей кожи, уход за ногтями, по желанию — без покрытия. Практично и деликатно.
         </div>
       </div>
+
     </div>
 
     <img class="master-photo"
@@ -906,61 +937,63 @@ footer {
 
 <section class="shop" id="shop">
   <h2>Товары для ухода</h2>
+
   <div class="shop-description">
     В нашем салоне вы также можете приобрести товары для ухода за собой дома
   </div>
 
   <div class="products-wrap">
+
     <button class="slider-arrow left" onclick="moveProducts(-1)">‹</button>
 
     <div class="products" id="products">
 
       <article class="product-card" onclick="openProduct('scrub')">
-        <button class="heart" onclick="event.stopPropagation(); toggleHeart(this)">♡</button>
+        <button class="heart" onclick="event.stopPropagation();toggleHeart(this)">♡</button>
         <img class="product-image" src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=85" alt="Скраб">
         <div class="product-price">456 ₽</div>
         <div class="product-name">Скраб для тела The Act с запахом кокоса</div>
-        <button class="quick-add" onclick="event.stopPropagation(); addToCart('scrub')">Добавить в корзину</button>
+        <button class="quick-add" onclick="event.stopPropagation();addToCart('scrub')">Добавить в корзину</button>
       </article>
 
       <article class="product-card" onclick="openProduct('oil')">
-        <button class="heart" onclick="event.stopPropagation(); toggleHeart(this)">♡</button>
+        <button class="heart" onclick="event.stopPropagation();toggleHeart(this)">♡</button>
         <img class="product-image" src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=700&q=85" alt="Масло">
         <div class="product-price">568 ₽</div>
         <div class="product-name">Масло для кутикулы DOONAILS</div>
-        <button class="quick-add" onclick="event.stopPropagation(); addToCart('oil')">Добавить в корзину</button>
+        <button class="quick-add" onclick="event.stopPropagation();addToCart('oil')">Добавить в корзину</button>
       </article>
 
       <article class="product-card" onclick="openProduct('files')">
-        <button class="heart" onclick="event.stopPropagation(); toggleHeart(this)">♡</button>
+        <button class="heart" onclick="event.stopPropagation();toggleHeart(this)">♡</button>
         <img class="product-image" src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=700&q=85" alt="Пилочки">
         <div class="product-price">543 ₽</div>
         <div class="product-name">Пилочки для ногтей 10 шт DOONAILS</div>
-        <button class="quick-add" onclick="event.stopPropagation(); addToCart('files')">Добавить в корзину</button>
+        <button class="quick-add" onclick="event.stopPropagation();addToCart('files')">Добавить в корзину</button>
       </article>
 
       <article class="product-card" onclick="openProduct('cream')">
-        <button class="heart" onclick="event.stopPropagation(); toggleHeart(this)">♡</button>
+        <button class="heart" onclick="event.stopPropagation();toggleHeart(this)">♡</button>
         <img class="product-image" src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=700&q=85" alt="Крем">
         <div class="product-price">690 ₽</div>
         <div class="product-name">Увлажняющий крем для рук</div>
-        <button class="quick-add" onclick="event.stopPropagation(); addToCart('cream')">Добавить в корзину</button>
+        <button class="quick-add" onclick="event.stopPropagation();addToCart('cream')">Добавить в корзину</button>
       </article>
 
       <article class="product-card" onclick="openProduct('mask')">
-        <button class="heart" onclick="event.stopPropagation(); toggleHeart(this)">♡</button>
+        <button class="heart" onclick="event.stopPropagation();toggleHeart(this)">♡</button>
         <img class="product-image" src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=700&q=85" alt="Маска">
         <div class="product-price">750 ₽</div>
         <div class="product-name">Питательная маска для рук</div>
-        <button class="quick-add" onclick="event.stopPropagation(); addToCart('mask')">Добавить в корзину</button>
+        <button class="quick-add" onclick="event.stopPropagation();addToCart('mask')">Добавить в корзину</button>
       </article>
 
       <article class="product-card" onclick="openProduct('serum')">
-        <button class="heart" onclick="event.stopPropagation(); toggleHeart(this)">♡</button>
+        <button class="heart" onclick="event.stopPropagation();toggleHeart(this)">♡</button>
         <img class="product-image" src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=85" alt="Сыворотка">
         <div class="product-price">890 ₽</div>
         <div class="product-name">Сыворотка для ухода за ногтями</div>
-        <button class="quick-add" onclick="event.stopPropagation(); addToCart('serum')">Добавить в корзину</button>
+        <button class="quick-add" onclick="event.stopPropagation();addToCart('serum')">Добавить в корзину</button>
       </article>
 
     </div>
@@ -969,12 +1002,10 @@ footer {
   </div>
 
   <button class="cart-link" onclick="openCart()">
-    Корзина (<span id="cartCount">0</span>)
+    Корзина (<span id="cartCountShop">0</span>)
   </button>
 </section>
 </main>
-
-<!-- СТРАНИЦА ТОВАРА -->
 
 <section class="product-detail" id="productDetail">
   <div class="detail-navigation">
@@ -1006,7 +1037,10 @@ footer {
           <span id="detailQty">1</span>
           <button onclick="changeDetailQuantity(1)">+</button>
         </div>
-        <button class="add-cart" onclick="addDetailToCart()">Добавить в корзину</button>
+
+        <button class="add-cart" onclick="addDetailToCart()">
+          Добавить в корзину
+        </button>
       </div>
 
       <div class="detail-extra">
@@ -1018,19 +1052,19 @@ footer {
 
 <section class="product-info" id="productInfo" style="display:none">
   <h2>Больше о вашем уходе</h2>
+
   <div class="info-columns">
     <div>
       <h3>Состав</h3>
       <p id="detailComposition"></p>
     </div>
+
     <div>
       <h3>Как использовать</h3>
       <p id="detailUsage"></p>
     </div>
   </div>
 </section>
-
-<!-- КОРЗИНА -->
 
 <section class="cart-page" id="cartPage">
   <div class="cart-heading">
@@ -1046,7 +1080,9 @@ footer {
   <div class="cart-products" id="cartProducts"></div>
   <div class="cart-total" id="cartTotal"></div>
 
-  <button class="checkout" onclick="checkout()">Оформить заказ</button>
+  <button class="checkout" onclick="checkout()">
+    Оформить заказ
+  </button>
 
   <div class="detail-navigation">
     <button onclick="closeCart()">‹ Назад к товарам</button>
@@ -1060,6 +1096,7 @@ footer {
     Контактный номер телефона<br>
     +7 (***)-***-**-**
   </div>
+
   <div>
     email<br>
     ************@mail.ru
@@ -1225,9 +1262,15 @@ function moveProducts(direction) {
   const next = container.scrollLeft + direction * step;
 
   if (direction > 0 && container.scrollLeft >= maxScroll - 5) {
-    container.scrollTo({ left: 0, behavior: "smooth" });
+    container.scrollTo({
+      left: 0,
+      behavior: "smooth"
+    });
   } else if (direction < 0 && container.scrollLeft <= 5) {
-    container.scrollTo({ left: maxScroll, behavior: "smooth" });
+    container.scrollTo({
+      left: maxScroll,
+      behavior: "smooth"
+    });
   } else {
     container.scrollTo({
       left: Math.max(0, Math.min(maxScroll, next)),
@@ -1281,8 +1324,6 @@ function changeDetailQuantity(delta) {
 
 /* ДОБАВЛЕНИЕ В КОРЗИНУ */
 
-/* Эта функция вызывается кнопками прямо в каталоге */
-
 function addToCart(id) {
   if (!productsData[id]) {
     alert("Такого товара не существует");
@@ -1295,8 +1336,6 @@ function addToCart(id) {
   alert(productsData[id].name + " добавлен в корзину!");
 }
 
-/* Добавление со страницы товара */
-
 function addDetailToCart() {
   if (!currentProduct || !productsData[currentProduct]) {
     alert("Сначала выберите товар");
@@ -1307,7 +1346,6 @@ function addDetailToCart() {
     (cart[currentProduct] || 0) + detailQuantity;
 
   updateCartCount();
-
   alert("Товар добавлен в корзину!");
 }
 
@@ -1319,11 +1357,8 @@ function updateCartCount() {
     0
   );
 
-  const counter = document.getElementById("cartCount");
-
-  if (counter) {
-    counter.textContent = count;
-  }
+  document.getElementById("cartCount").textContent = count;
+  document.getElementById("cartCountShop").textContent = count;
 }
 
 /* ОТКРЫТИЕ КОРЗИНЫ */
@@ -1351,7 +1386,6 @@ function closeCart() {
 function renderCart() {
   const container = document.getElementById("cartProducts");
   const totalElement = document.getElementById("cartTotal");
-
   const ids = Object.keys(cart);
 
   if (!ids.length) {
@@ -1383,9 +1417,11 @@ function renderCart() {
 
         <p>${p.price.toLocaleString("ru-RU")} ₽ за штуку</p>
 
-        <p><strong>
-          ${itemTotal.toLocaleString("ru-RU")} ₽
-        </strong></p>
+        <p>
+          <strong>
+            ${itemTotal.toLocaleString("ru-RU")} ₽
+          </strong>
+        </p>
 
         <div class="cart-controls">
           <button onclick="updateCart('${id}', -1)">−</button>
@@ -1393,8 +1429,7 @@ function renderCart() {
           <button onclick="updateCart('${id}', 1)">+</button>
         </div>
 
-        <button class="cart-remove"
-          onclick="removeFromCart('${id}')">
+        <button class="cart-remove" onclick="removeFromCart('${id}')">
           Удалить товар
         </button>
       </div>
